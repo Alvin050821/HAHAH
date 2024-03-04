@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,21 +7,25 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './update-produk.component.html',
   styleUrls: ['./update-produk.component.scss']
 })
-export class UpdateProdukComponent {
+export class UpdateProdukComponent implements OnInit {
 
-  produkId:number = this.activatedRoute.snapshot.params["id"];
+  produkId!: number; // Use non-null assertion operator
 
-  constructor(private adminService: AdminService,
-    private activatedRoute: ActivatedRoute) { }
+  constructor(private adminService: AdminService, private activatedRoute: ActivatedRoute) { }
 
-    ngOnInit () {
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      // Use '+' to convert string to number
+      this.produkId = +params['id'];
       this.getProdukById();
-    }
+    });
+  }
 
-    getProdukById() {
-      this.adminService.getProdukById(this.produkId).subscribe((res) => {
-        console.log(res);
-      })
-    }
-
+  getProdukById() {
+    this.adminService.getProdukById(this.produkId).subscribe((res) => {
+      console.log(res);
+      const ProdukDto = res;
+      console.log(ProdukDto)
+    });
+  }
 }

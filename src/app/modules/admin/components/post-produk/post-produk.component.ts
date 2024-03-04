@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class PostProdukComponent implements OnInit {
   postProdukForm!: FormGroup;
   isSpinning: boolean = false;
-  selectedFile: any; 
+  selectedFile: any;
   imagePreview: string | ArrayBuffer | null = null; // Declare imagePreview property
 
   DaftarMerek = ["LENOVO", "Apple", "ASUS", "HP", "ACER", "DELL", "ADVAN", "AXIOO"];
