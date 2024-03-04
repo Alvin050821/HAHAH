@@ -1,0 +1,35 @@
+.bg {
+  background-color: #F8F8F8;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Memusatkan secara horizontal */
+  align-items: center; /* Memusatkan secara vertikal */
+  height: 100vh; /* Memastikan elemen form di tengah layar */
+}
+
+.child {
+  padding: 50px;
+  width: 450px; // Sesuaikan lebar dengan form
+  background-color: white;
+  box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.imgDiv {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #001529;
+  border: none;
+}
+
+.login-form-button {
+  width: 100%;
+  margin-top: 10px;
+  display: block;
+}
+
+nz-form-control {
+  width: 100%;
+}

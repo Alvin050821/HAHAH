@@ -1,0 +1,60 @@
+<div class="bg">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="working....">
+    <div class="parent">
+      <div class="child">
+        <div nz-row class="imgDiv">
+          <div nz-col nzSpan="24">
+            <h1 style="text-align: center;">Register</h1>
+          </div>
+        </div>
+        <form nz-form [formGroup]="registerForm">
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="E-mail Input Tidak Valid">
+              <input nz-input placeholder="E-mail" id="email" formControlName="email" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzHasFeedback [nzErrorTip]="errorPass">
+              <input nz-input placeholder="Password" type="password" id="password" formControlName="password" />
+              <ng-template #errorPass let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Kata sandi diperlukan
+                </ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">
+                  Kata sandi harus berisi 8 karakter, 1 huruf kecil, 1 huruf besar, 1 angka, dan 1 karakter khusus
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzHasFeedback [nzErrorTip]="errorTpl">
+              <input nz-input type="password" placeholder="Confirm Password" id="checkPassword"
+                formControlName="checkPassword" />
+              <ng-template #errorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  konfirmasi kata sandi Anda
+                </ng-container>
+                <ng-container *ngIf="control.hasError('confirm')">
+                  Dua kata sandi yang Anda masukkan tidak konsisten!
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzHasFeedback [nzErrorTip]="userErrorTpl">
+              <input nz-input placeholder="Name" id="username" formControlName="name" />
+              <ng-template #userErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  Silakan masukkan nama pengguna Anda!
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="register()"
+            [disabled]="registerForm.invalid">Register</button>
+          Or <a routerLink="/login">Login!</a>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>

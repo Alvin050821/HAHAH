@@ -1,0 +1,30 @@
+<div style="background-color: #F8F8F8; min-height: 91vh;">
+  <div style="padding-top: 10px;"></div>
+
+  <div style="margin-top:10px;" class="child" *ngFor="let produk of produks">
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <img class="prfile" style="height: 130px; width: 200px; border-radius: 10px;" [src]="produk.processedImg"
+          alt="profile" />
+      </div>
+      <div nz-col nzSpan="16">
+        <h2 style="cursor: pointer; color: #108ee9;">
+          {{produk.merek}} - {{produk.nama}}</h2>
+        <p>{{produk.deskripsi}}</p>
+
+        <hr>
+        <h5>Harga : <b>${{produk.harga}}</b> - Warna : <b>{{produk.warna}}</b> - Prosesor :
+          <b>{{produk.prosesor}}</b> - Jenis : <b>{{produk.jenis}}</b> - Tahun : <b>{{produk.tahun | date: 'yyyy'}}</b>
+        </h5>
+        <hr>
+        <div style="float: right;">
+          <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary"
+            routerLink="/admin/produk/(produk['id'])">Update</button>
+          <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary"
+            (click)="deleteProduk(produk['id'])" nzDanger>Delete</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

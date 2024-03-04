@@ -1,0 +1,108 @@
+<div style="margin-top: 50px;">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="working...">
+    <div class="parent">
+      <div class="child">
+        <div nz-row class="imgDiv">
+        </div>
+
+        <form nz-form [formGroup]="postProdukForm">
+          <div nz-row>
+
+            <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+              <div class="profile-badge">
+                <label for="upload_profile_image" class="upload-label" *ngIf="selectedFile">
+                  <img class="profile" [src]="imagePreview" alt="profie" />
+                </label>
+                <input type="file" nz-button nzType="primary" id="upload_profile_image"
+                  accept="image/x-png,image/gif,image/jpeg" (change)="onFileSelected($event)" />
+                  <button nz-button nzShape="circle"></button>
+              </div>
+            </div>
+
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Input ini harus diisi!">
+                  <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Pilih Nama Merek"
+                      formControlName="merek">
+                    <nz-option *ngFor="let merek of DaftarMerek" nzLabel="{{ merek }}"
+                      nzValue="{{ merek }}"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+                <nz-form-item>
+                  <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Input ini harus diisi">
+                    <input nz-input placeholder="Nama" formControlName="nama" >
+                  </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Input ini harus diisi!">
+                  <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Pilih jenis produk"
+                      formControlName="jenis">
+                    <nz-option *ngFor="let jenis of JenisProduk" nzLabel="{{ jenis }}"
+                      nzValue="{{ jenis }}"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Input ini harus diisi!">
+                  <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Pilih Prosesor" formControlName="prosesor">
+                    <nz-option *ngFor="let prosesor of DaftarProsesor" nzLabel="{{ prosesor }}"
+                      nzValue="{{ prosesor }}"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Input ini harus diisi!">
+                  <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Pilih warna"
+                      formControlName="warna">
+                    <nz-option *ngFor="let warna of DaftarWarna" nzLabel="{{ warna }}"
+                      nzValue="{{ warna }}"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Input ini harus diisi!">
+                    <nz-year-picker style="width: 100%" nzPlaceHolder="Tahun Pelirisan" formControlName="tahun"></nz-year-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Input ini harus diisi!">
+                    <input nz-input placeholder="Harga" formControlName="harga">
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="Input ini harus diisi!">
+                  <textarea  rows="1" nz-input placeholder="Deskripsi" formControlName="deskripsi"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="submitPostProduk()">
+            Kirim
+          </button>
+        </form>
+      </div>
+    </div>
